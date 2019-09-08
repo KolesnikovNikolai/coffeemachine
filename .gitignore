@@ -1,0 +1,4 @@
+# composer nginx dir
+/nginx
+# phpstorm project files
+.idea
