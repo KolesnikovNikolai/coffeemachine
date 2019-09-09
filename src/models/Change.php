@@ -100,12 +100,14 @@ class Change
         $result = $this->getDefaultResult();
         $currentSum = 0;
         $nominalSort = $this->getNominalArray();
+        $counts = $this->getCountsCoin();
         arsort($nominalSort);
         foreach ($nominalSort as $key => $value) {
             while ($currentSum < $sum) {
-                if (($currentSum + $value) <= $sum) {
+                if (($currentSum + $value) <= $sum && $counts[$key] > 0) {
                     $currentSum += $value;
                     $result[$key]++;
+                    $counts[$key]--;
                 } else {
                     break;
                 }
